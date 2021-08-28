@@ -1,0 +1,5 @@
+inherit_gem:
+  relaxed-rubocop: .rubocop.yml
+
+AllCops:
+    NewCops: enable
