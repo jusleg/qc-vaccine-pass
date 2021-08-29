@@ -1,10 +1,23 @@
 # frozen_string_literal: true
 
 require 'sinatra'
+require 'sinatra/support/i18nsupport'
 require 'passbook'
 require 'active_support/json/encoding'
 require 'dotenv/load'
 require_relative 'lib/passbook_monkeypatch'
+require_relative 'helpers/locale_helper'
+
+helpers LocaleHelper
+
+register Sinatra::I18nSupport
+load_locales './config/locales'
+
+enable :sessions
+
+before do
+  set_locale(params[:locale].to_sym) if params[:locale]
+end
 
 Passbook.configure do |passbook|
   passbook.p12_password = ENV['p12_password']

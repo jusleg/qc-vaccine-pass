@@ -6,6 +6,7 @@ gem 'activesupport'
 gem 'dotenv'
 gem 'passbook'
 gem 'sinatra'
+gem 'sinatra-support'
 
 group :development do
   gem 'pry'
