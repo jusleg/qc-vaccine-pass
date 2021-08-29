@@ -1,0 +1,21 @@
+<div class="max-w-2xl pt-20 mx-auto p-8">
+  <div class="text-4xl text-blue-600 font-semibold"><%= I18n.t('home.heading') %></div>
+  <img src="images/card.webp" alt="<%= I18n.t('home.photo_alt') %>" class="py-4">
+  <div><%= I18n.t('home.description', vaxicode_link: I18n.t('home.vaxicode_html')) %></div>
+
+  <div class="pt-4 font-bold" id="how-does-it-work"><%= I18n.t('home.header_how_it_work') %></div>
+  <div><%= I18n.t('home.how_it_works') %></div>
+
+  <div class="pt-4 font-bold" id="wtf-are-you-doing-with-my-data"><%= I18n.t('home.header_data_handling') %></div>
+  <div><%= I18n.t('home.data_handling', github_link: I18n.t('home.github_html')) %></div>
+
+  <div class="pt-4 font-bold" id="missing-qr-code"><%= I18n.t('home.no_qr_code_header') %></div>
+  <div><%= I18n.t('home.no_qr_code', self_service_link: I18n.t('home.self_service_html')) %></div>
+
+  <div class="pt-4 font-bold" id="missing-qr-code"><%= I18n.t('home.get_in_touch_header') %></div>
+  <div><%= I18n.t('home.get_in_touch', twitter_link: I18n.t('home.twitter_html')) %></div>
+
+  <div class="pt-4 text-gray-500">
+    <a href="https://famingolabs.com" class="underline">Famingo Labs</a>, <%= Time.now.year %>
+  </div>
+</div>

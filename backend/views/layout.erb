@@ -1,0 +1,24 @@
+<!doctype html>
+
+<html lang=<%= locale %>>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title><%= I18n.t('meta.title') %></title>
+  <meta name="description" content="<%= I18n.t('meta.description') %>">
+  <meta name="author" content="Famingo Labs">
+
+  <meta property="og:title" content="<%= I18n.t('meta.title') %>">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://qc-vaccine-pass.herokuapp.com/">
+  <meta property="og:description" content="<%= I18n.t('meta.description') %>">
+  <meta property="og:image" content="/images/card.webp">
+
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+  <%= yield %>
+</body>
+</html>

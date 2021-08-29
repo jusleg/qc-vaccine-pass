@@ -58,6 +58,8 @@ GEM
       rack (~> 2.2)
       rack-protection (= 2.1.0)
       tilt (~> 2.0)
+    sinatra-support (1.2.2)
+      sinatra (>= 1.0)
     terminal-table (3.0.1)
       unicode-display_width (>= 1.1.1, < 3)
     tilt (2.0.10)
@@ -78,6 +80,7 @@ DEPENDENCIES
   relaxed-rubocop
   rubocop
   sinatra
+  sinatra-support
 
 BUNDLED WITH
    2.2.22
