@@ -37,6 +37,10 @@ get '/manual' do
   erb :form
 end
 
+get '/scan' do
+  erb :scanner, layout: false
+end
+
 post '/api/pass' do
   pass = PASS_TEMPLATE.result_with_hash(
     name: params[:name],
