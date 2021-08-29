@@ -4,13 +4,13 @@
     "description" : "COVID-19 immunization record",
     "teamIdentifier": "88US22BS7E",
     "organizationName": "Famingo",
-    "serialNumber" : "123456",
+    "serialNumber" : "<%= serial_number %>",
     "foregroundColor": "#ffffff",
     "backgroundColor": "#095797",
     "labelColor": "#E5E7EB",
     "logoText": "COVID-19 immunization record",
     "barcode": {
-        "message": "HI",
+        "message": "<%= qr_content %>",
         "format": "PKBarcodeFormatQR",
         "messageEncoding": "iso-8859-1"
     },
@@ -19,7 +19,7 @@
             {
                 "key" : "name",
                 "label" : "Name",
-                "value" : "Justin Leger"
+                "value" : "<%= name %>"
             }
         ],
         "secondaryFields" : [
@@ -31,7 +31,7 @@
             {
                 "key" : "location",
                 "label" : "Location",
-                "value" : "Palais des congrès"
+                "value" : "<%= location %>"
             }
         ],
         "auxiliaryFields" : [
@@ -40,8 +40,8 @@
         "backFields" : [
             {
                 "key" : "terms",
-                "label" : "Terms and Conditions",
-                "value" : "Put your terms here"
+                "label" : "Generated on",
+                "value" : "<%= Time.now.strftime("%m/%d/%Y") %>"
             }
         ]
     }
