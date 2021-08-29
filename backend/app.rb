@@ -16,7 +16,7 @@ end
 PASS_TEMPLATE = ERB.new(File.read('views/pass.json.erb'))
 
 get '/passbook' do
-  pass = ERB.new(PASS_TEMPLATE).result_with_hash(
+  pass = PASS_TEMPLATE.result_with_hash(
     name: "it works",
     qr_content: "Wassup",
     location: "Montreal",
