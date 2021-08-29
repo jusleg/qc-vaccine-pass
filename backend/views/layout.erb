@@ -19,6 +19,13 @@
 </head>
 
 <body>
+  <div class="px-4 py-2 text-right">
+    <% if locale == :en %>
+      <a href="?locale=fr">Français</a>
+    <% else %> 
+      <a href="?locale=en">English</a>
+    <% end %>
+  </div>
   <%= yield %>
 </body>
 </html>
