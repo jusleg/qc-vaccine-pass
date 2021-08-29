@@ -21,3 +21,7 @@ en:
   not_found:
     heading: "Something went wrong..."
     button: "return to homepage"
+  form:
+    name: Name
+    location: Location
+    qr_content: QR code content

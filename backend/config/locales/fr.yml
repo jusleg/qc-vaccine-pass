@@ -21,3 +21,7 @@ fr:
   not_found:
     heading: "Une erreur est survenue..."
     button: "retour à la page d'accueil"
+  form:
+    name: Nom
+    location: Emplacement
+    qr_content: Contenu du code QR

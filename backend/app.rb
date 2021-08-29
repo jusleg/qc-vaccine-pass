@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'digest'
 require 'sinatra'
 require 'sinatra/support/i18nsupport'
 require 'passbook'
@@ -32,7 +33,25 @@ get '/' do
   erb :home
 end
 
-get '/passbook' do
+get '/manual' do
+  erb :form
+end
+
+post '/api/pass' do
+  pass = PASS_TEMPLATE.result_with_hash(
+    name: params[:name],
+    qr_content: params[:qr_content],
+    location: params[:location],
+    serial_number: Digest::SHA256.hexdigest(params[:qr_content])
+  )
+  passbook = Passbook::PKPass.new(pass)
+  passbook.addFiles(['icons/icon.png', 'icons/icon@2x.png'])
+  response['Content-Type'] = 'application/vnd.apple.pkpass'
+  attachment 'mypass.pkpass'
+  passbook.stream.string
+end
+
+get '/demo' do
   pass = PASS_TEMPLATE.result_with_hash(
     name: "it works",
     qr_content: "Wassup",
