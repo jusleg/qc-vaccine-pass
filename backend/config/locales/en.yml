@@ -15,3 +15,9 @@ en:
     get_in_touch_header: "How can I get in touch?"
     get_in_touch: "%{twitter_link} on Twitter."
     twitter_html: <a href="https://twitter.com/jusleg" class="text-blue-500 underline">@jusleg</a>
+  meta:
+    title: "Quebec Vaccine Pass Generator"
+    description: "Generate iOS wallet pass with your COVID-19 proof of vaccination."
+  not_found:
+    heading: "Something went wrong..."
+    button: "return to homepage"

@@ -15,3 +15,9 @@ fr:
     get_in_touch_header: "Comment puis-je vous contacter?"
     get_in_touch: "%{twitter_link} sur Twitter."
     twitter_html: <a href="https://twitter.com/jusleg" class="text-blue-500 underline">@jusleg</a>
+  meta:
+    title: "Générateur de preuve vaccinale"
+    description: "Générez votre preuve vaccinale du COVID-19 pour le portefeuille iOS"
+  not_found:
+    heading: "Une erreur est survenue..."
+    button: "retour à la page d'accueil"
