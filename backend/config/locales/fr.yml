@@ -1,0 +1,17 @@
+fr:
+  home:
+    heading: "Générez votre preuve vaccinale du COVID-19 pour iOS"
+    photo_alt: "Preuve vaccinale du COVID-19 sur iOS dans l'application portefeuille"
+    description: "Nous avons bâti une application qui permet de générer une preuve vaccinale du COVID-19. Même si %{vaxicode_link} existe, nous croyons qu'une carte dans le portefeuille iOS est plus simple."
+    vaxicode_html: <a href="https://apps.apple.com/ca/app/vaxicode/id1571692711" class="text-blue-500 underline">VaxiCode</a>
+    header_how_it_work: "Comment ça fonctionne?"
+    how_it_works: "En utilisant notre utilisation, vous pouvez scanner votre preuve vaccinale du gouvernement et nous allons la convertir en une carte pour votre portefeuille iOS. Une fois la carte créée, vous pouvez désinstaller l'application et la carte restera dans votre portefeuille."
+    header_data_handling: "Que faites-vous avec mes données?"
+    data_handling: "Nous ne conservons pas les informations que vous nous transmettez. Nous l'utilisons seulement pour générer une carte signée pour iOS qui peut être ajoutée dans votre portefeuille. Vous pouvez voir notre code source sur %{github_link}."
+    github_html: <a href="https://github.com/jusleg/qc-vaccine-pass" class="text-blue-500 underline">GitHub</a>
+    no_qr_code_header: "Que puis-je faire si je ne trouve pas mon code QR?"
+    no_qr_code: "Vous pouvez utiliser %{self_service_link} pour télécharger votre preuve de vaccination."
+    self_service_html: <a href="https://covid19.quebec.ca/PreuveVaccinale" class="text-blue-500 underline">self-service portal</a>
+    get_in_touch_header: "Comment puis-je vous contacter?"
+    get_in_touch: "%{twitter_link} sur Twitter."
+    twitter_html: <a href="https://twitter.com/jusleg" class="text-blue-500 underline">@jusleg</a>

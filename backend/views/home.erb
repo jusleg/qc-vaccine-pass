@@ -1,19 +1,19 @@
 <div class="max-w-2xl pt-20 mx-auto p-8">
-  <div class="text-4xl text-blue-600 font-semibold">Generate your COVID-19 vaccination record for iOS</div>
-  <img src="images/card.webp" alt="iOS COVID-19 vaccination record card in wallet" class="py-4">
-  <div>We built an app to help you generate your Quebec vaccination proof. Although <a href="https://apps.apple.com/ca/app/vaxicode/id1571692711" class="text-blue-500 underline">VaxiCode</a> was created by the government, we find that it can be improved by adding wallet support for iOS. </div>
+  <div class="text-4xl text-blue-600 font-semibold"><%= I18n.t('home.heading') %></div>
+  <img src="images/card.webp" alt="<%= I18n.t('home.photo_alt') %>" class="py-4">
+  <div><%= I18n.t('home.description', vaxicode_link: I18n.t('home.vaxicode_html')) %></div>
 
-  <div class="pt-4 font-bold" id="how-does-it-work">How does it work?</div>
-  <div>Using our application, you can scan the vaccination proof provided by the government and we embed the information into an iOS pass that you can use in the wallet application. Once the pass is generated, you can delete the application and the pass will remain in your wallet.</div>
+  <div class="pt-4 font-bold" id="how-does-it-work"><%= I18n.t('home.header_how_it_work') %></div>
+  <div><%= I18n.t('home.how_it_works') %></div>
 
-  <div class="pt-4 font-bold" id="wtf-are-you-doing-with-my-data">What are you doing with my data?</div>
-  <div>We do not store any information you provide to us. We only use it to generate a signed iOS pass that we let you add to your wallet. You can view our source code on <a href="https://github.com/jusleg/qc-vaccine-pass" class="text-blue-500 underline">GitHub</a>.</div>
+  <div class="pt-4 font-bold" id="wtf-are-you-doing-with-my-data"><%= I18n.t('home.header_data_handling') %></div>
+  <div><%= I18n.t('home.data_handling', github_link: I18n.t('home.github_html')) %></div>
 
-  <div class="pt-4 font-bold" id="missing-qr-code">I do not have my QR code, what can I do?</div>
-  <div>You can use the <a href="https://covid19.quebec.ca/PreuveVaccinale" class="text-blue-500 underline">self-service portal</a> to download your digital proof of vaccination.</div>
+  <div class="pt-4 font-bold" id="missing-qr-code"><%= I18n.t('home.no_qr_code_header') %></div>
+  <div><%= I18n.t('home.no_qr_code', self_service_link: I18n.t('home.self_service_html')) %></div>
 
-  <div class="pt-4 font-bold" id="missing-qr-code">How can I get in touch?</div>
-  <div><a href="https://twitter.com/jusleg" class="text-blue-500 underline">@jusleg</a> on Twitter.</div>
+  <div class="pt-4 font-bold" id="missing-qr-code"><%= I18n.t('home.get_in_touch_header') %></div>
+  <div><%= I18n.t('home.get_in_touch', twitter_link: I18n.t('home.twitter_html')) %></div>
 
   <div class="pt-4 text-gray-500">
     <a href="https://famingolabs.com" class="underline">Famingo Labs</a>, <%= Time.now.year %>

@@ -1,0 +1,17 @@
+en:
+  home:
+    heading: "Generate your COVID-19 vaccination record for iOS"
+    photo_alt: "iOS COVID-19 vaccination record card in wallet"
+    description: "We built an app to help you generate your Quebec vaccination proof. Although %{vaxicode_link} was created by the government, we find that it can be improved by adding wallet support for iOS."
+    vaxicode_html: <a href="https://apps.apple.com/ca/app/vaxicode/id1571692711" class="text-blue-500 underline">VaxiCode</a>
+    header_how_it_work: "How does it work?"
+    how_it_works: "Using our application, you can scan the vaccination proof provided by the government and we embed the information into an iOS pass that you can use in the wallet application. Once the pass is generated, you can delete the application and the pass will remain in your wallet."
+    header_data_handling: "What are you doing with my data?"
+    data_handling: "We do not store any information you provide to us. We only use it to generate a signed iOS pass that we let you add to your wallet. You can view our source code on %{github_link}."
+    github_html: <a href="https://github.com/jusleg/qc-vaccine-pass" class="text-blue-500 underline">GitHub</a>
+    no_qr_code_header: "I do not have my QR code, what can I do?"
+    no_qr_code: "You can use the %{self_service_link} to download your digital proof of vaccination."
+    self_service_html: <a href="https://covid19.quebec.ca/PreuveVaccinale" class="text-blue-500 underline">self-service portal</a>
+    get_in_touch_header: "How can I get in touch?"
+    get_in_touch: "%{twitter_link} on Twitter."
+    twitter_html: <a href="https://twitter.com/jusleg" class="text-blue-500 underline">@jusleg</a>
