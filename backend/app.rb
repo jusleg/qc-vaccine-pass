@@ -15,6 +15,10 @@ end
 
 PASS_TEMPLATE = ERB.new(File.read('views/pass.json.erb'))
 
+get '/' do
+  erb :home
+end
+
 get '/passbook' do
   pass = PASS_TEMPLATE.result_with_hash(
     name: "it works",
@@ -27,4 +31,9 @@ get '/passbook' do
   response['Content-Type'] = 'application/vnd.apple.pkpass'
   attachment 'mypass.pkpass'
   passbook.stream.string
+end
+
+not_found do
+  status 404
+  erb :not_found
 end
