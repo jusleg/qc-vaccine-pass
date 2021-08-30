@@ -4,6 +4,7 @@ fr:
     photo_alt: "Preuve vaccinale du COVID-19 sur iOS dans l'application portefeuille"
     description: "Nous avons bâti une application qui permet de générer une preuve vaccinale du COVID-19. Même si %{vaxicode_link} existe, nous croyons qu'une carte dans le portefeuille iOS est plus simple."
     vaxicode_html: <a href="https://apps.apple.com/ca/app/vaxicode/id1571692711" class="text-blue-500 underline">VaxiCode</a>
+    cta_button: "Générer ma passe pour portefeuille iOS"
     header_how_it_work: "Comment ça fonctionne?"
     how_it_works: "En utilisant notre utilisation, vous pouvez scanner votre preuve vaccinale du gouvernement et nous allons la convertir en une carte pour votre portefeuille iOS. Une fois la carte créée, vous pouvez désinstaller l'application et la carte restera dans votre portefeuille."
     header_data_handling: "Que faites-vous avec mes données?"

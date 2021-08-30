@@ -20,7 +20,7 @@ load_locales './config/locales'
 enable :sessions
 
 before do
-  set_locale(params[:locale].to_sym) if params[:locale]
+  assign_locale(params[:locale].to_sym) if params[:locale]
 end
 
 Passbook.configure do |passbook|
@@ -36,10 +36,6 @@ get '/' do
   erb :home
 end
 
-get '/manual' do
-  erb :form
-end
-
 get '/scan' do
   erb :scanner, layout: false
 end
@@ -50,7 +46,7 @@ post '/api/pass' do
   entries = qr_json.dig('payload', 'vc', 'credentialSubject', 'fhirBundle', 'entry')
   # TODO: access hash with keys instead of array positions for redundancy,
   name = name(entries[0])
-  shot_status = shot_status(entries[2])
+  # shot_status = shot_status(entries[2])
   location = location(entries[2])
 
   pass = PASS_TEMPLATE.result_with_hash(
@@ -61,20 +57,6 @@ post '/api/pass' do
     serial_number: Digest::SHA256.hexdigest(serial_number)
   )
 
-  passbook = Passbook::PKPass.new(pass)
-  passbook.addFiles(['icons/icon.png', 'icons/icon@2x.png'])
-  response['Content-Type'] = 'application/vnd.apple.pkpass'
-  attachment 'mypass.pkpass'
-  passbook.stream.string
-end
-
-get '/demo' do
-  pass = PASS_TEMPLATE.result_with_hash(
-    name: "it works",
-    qr_content: "Wassup",
-    location: "Montreal",
-    serial_number: 1234
-  )
   passbook = Passbook::PKPass.new(pass)
   passbook.addFiles(['icons/icon.png', 'icons/icon@2x.png'])
   response['Content-Type'] = 'application/vnd.apple.pkpass'
