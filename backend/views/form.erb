@@ -1,13 +1,10 @@
 <div class="max-w-2xl pt-2 lg:pt-10 mx-auto p-4">
-  <form action="/api/pass" method="post">
+  <form action="/scan">
     <label for="name"><div class="pt-4 font-bold"><%= I18n.t('form.name') %></div></label>
     <div><input type="text" id="name" name="name" placeholder="John Doe" class="w-full text-3xl border border-gray-300 rounded p-1 focus:border-blue-600"></div>
 
     <label for="location"><div class="pt-4 font-bold"><%= I18n.t('form.location') %></div></label>
     <div><input type="text" id="location" name="location" placeholder="Montreal" class="w-full text-3xl border border-gray-300 rounded p-1 focus:border-blue-600"></div>
-
-    <label for="qr_content"><div class="pt-4 font-bold"><%= I18n.t('form.qr_content') %></div></label>
-    <div><input type="text" id="qr_content" name="qr_content" placeholder="shc:/..." class="w-full text-3xl border border-gray-300 rounded p-1 focus:border-blue-600"></div>
 
     <input type="submit" value="Submit" class="mt-4 p-2 rounded border-2 border-blue-600 text-blue-600 bg-white hover:bg-blue-600 hover:text-white">
   </form>
