@@ -21,6 +21,7 @@
   </div>
   <div style="display: none;">
     <form action="/api/pass" method="post" id="form">
+      <input type="text" id="raw_shc" name="raw_shc" >
       <input type="text" id="qr_content" name="qr_content" >
     </form>
   </div>
@@ -28,6 +29,7 @@
   <script type="text/javascript">
     function onQRCodeScanned(scannedText) {
         var scannedCode = window.parseShc(scannedText)
+        document.getElementById("raw_shc").value = scannedText;
         document.getElementById("qr_content").value = JSON.stringify(scannedCode);
         document.getElementById("form").submit();
     }

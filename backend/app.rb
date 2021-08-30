@@ -55,7 +55,7 @@ post '/api/pass' do
 
   pass = PASS_TEMPLATE.result_with_hash(
     name: name,
-    qr_content: shot_status,
+    qr_content: params[:raw_shc],
     location: location,
     # TODO: payload is already sent in the clear from the post request
     serial_number: Digest::SHA256.hexdigest(serial_number)
