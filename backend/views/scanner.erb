@@ -20,8 +20,8 @@
   </div>
   <div style="display: none;">
     <form action="/api/pass" method="post" id="form">
-      <input type="text" id="name" name="name" value="it works">
-      <input type="text" id="location" name="location" value="some random location">
+      <input type="text" id="name" name="name" value="<%= params[:name] %>">
+      <input type="text" id="location" name="location" value="<%= params[:location] %>">
       <input type="text" id="qr_content" name="qr_content" >
     </form>
   </div>
