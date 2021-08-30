@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script type="text/javascript" src="/javascript/jsqrscanner.nocache.js"></script>
+  <script type="text/javascript" src="/javascript/shc-parser.bundle.js"></script>
   <link rel="stylesheet" href="/stylesheets/style.css">
   <style>
     .qrPreviewVideo {
@@ -20,25 +21,17 @@
   </div>
   <div style="display: none;">
     <form action="/api/pass" method="post" id="form">
-      <input type="text" id="name" name="name" value="<%= params[:name] %>">
-      <input type="text" id="location" name="location" value="<%= params[:location] %>">
       <input type="text" id="qr_content" name="qr_content" >
     </form>
   </div>
 
-
   <script type="text/javascript">
-    function onQRCodeScanned(scannedText)
-    {
-      console.log(scannedText);
-    	var qrContentInput = document.getElementById("qr_content");
-    	if(qrContentInput)
-    	{
-    		qrContentInput.value = scannedText;
+    function onQRCodeScanned(scannedText) {
+        var scannedCode = window.parseShc(scannedText)
+        document.getElementById("qr_content").value = JSON.stringify(scannedCode);
         document.getElementById("form").submit();
-    	}
     }
-  
+
     //this function will be called when JsQRScanner is ready to use
     function JsQRScannerReady()
     {
@@ -47,13 +40,13 @@
         var jbScanner = new JsQRScanner(onQRCodeScanned);
         //reduce the size of analyzed images to increase performance on mobile devices
         jbScanner.setSnapImageMaxSize(1024);
-    	var scannerParentElement = document.getElementById("scanner");
-    	if(scannerParentElement)
-    	{
+        var scannerParentElement = document.getElementById("scanner");
+        if(scannerParentElement)
+        {
     	    //append the jbScanner to an existing DOM element
-    		jbScanner.appendTo(scannerParentElement);
-    	}        
+          jbScanner.appendTo(scannerParentElement);
+        }
     }
-  </script> 
+  </script>
 </body>
 </html>
