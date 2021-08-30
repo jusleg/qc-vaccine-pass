@@ -4,6 +4,7 @@ en:
     photo_alt: "iOS COVID-19 vaccination record card in wallet"
     description: "We built an app to help you generate your Quebec vaccination proof. Although %{vaxicode_link} was created by the government, we find that it can be improved by adding wallet support for iOS."
     vaxicode_html: <a href="https://apps.apple.com/ca/app/vaxicode/id1571692711" class="text-blue-500 underline">VaxiCode</a>
+    cta_button: "Generate iOS wallet pass"
     header_how_it_work: "How does it work?"
     how_it_works: "Using our application, you can scan the vaccination proof provided by the government and we embed the information into an iOS pass that you can use in the wallet application. Once the pass is generated, you can delete the application and the pass will remain in your wallet."
     header_data_handling: "What are you doing with my data?"
