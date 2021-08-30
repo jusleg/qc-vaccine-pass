@@ -24,5 +24,6 @@ jobs:
       - name: Rubocop
         run: |
           cd backend/
+          gem install relaxed-rubocop
           gem install rubocop
           rubocop
