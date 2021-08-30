@@ -15,7 +15,7 @@ module PassHelper
 
   def name(entry)
     person = entry.dig('resource', 'name')
-    "#{person[0]['given'][0]} #{person[0]['family'].join(" ")}"
+    "#{person[0]['given'][0]} #{person[0]['family'].join(' ')}"
   end
 
   def serial_number(payload)
