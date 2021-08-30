@@ -1,3 +1,7 @@
+// Extracted from obrassard/shc-extractor on August 29th, 2021 Under MIT License
+// https://github.com/obrassard/shc-extractor/blob/main/src/parsers.js
+//
+
 const zlib = require('zlib');
 
 function parseShc(rawSHC) {

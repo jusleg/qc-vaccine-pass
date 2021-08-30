@@ -13,13 +13,12 @@ bundle
 ruby app.rb
 ```
 
-Prepare JS bundle
 ```console
-node public/javascript/shc-parser.bundle.js
+npm install
 browserify public/javascript/shc-parser.js -o public/javascript/shc-parser.bundle.js
 ```
 
-A `.env` file with the proper certicates is required to sign iOS passes.
+An `.env` file with the proper certificates is required to sign iOS passes.
 
 ## Repo structure
 
