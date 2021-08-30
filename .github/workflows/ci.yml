@@ -1,0 +1,28 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+    branches:
+      - develop
+      - main
+jobs:
+  rubocop:
+    if: github.event.pull_request.draft == false
+    name: .rb linting
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.2
+      - name: Rubocop
+        run: |
+          cd backend/
+          gem install rubocop
+          rubocop
