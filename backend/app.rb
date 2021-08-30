@@ -6,10 +6,13 @@ require 'sinatra/support/i18nsupport'
 require 'passbook'
 require 'active_support/json/encoding'
 require 'dotenv/load'
+require 'json'
 require_relative 'lib/passbook_monkeypatch'
 require_relative 'helpers/locale_helper'
+require_relative 'helpers/pass_helper'
 
 helpers LocaleHelper
+helpers PassHelper
 
 register Sinatra::I18nSupport
 load_locales './config/locales'
@@ -42,12 +45,22 @@ get '/scan' do
 end
 
 post '/api/pass' do
+  qr_json = JSON.parse(params[:qr_content])
+  serial_number = serial_number(qr_json)
+  entries = qr_json.dig('payload', 'vc', 'credentialSubject', 'fhirBundle', 'entry')
+  # TODO: access hash with keys instead of array positions for redundancy,
+  name = name(entries[0])
+  shot_status = shot_status(entries[2])
+  location = location(entries[2])
+
   pass = PASS_TEMPLATE.result_with_hash(
-    name: params[:name],
-    qr_content: params[:qr_content],
-    location: params[:location],
-    serial_number: Digest::SHA256.hexdigest(params[:qr_content])
+    name: name,
+    qr_content: shot_status,
+    location: location,
+    # TODO: payload is already sent in the clear from the post request
+    serial_number: Digest::SHA256.hexdigest(serial_number)
   )
+
   passbook = Passbook::PKPass.new(pass)
   passbook.addFiles(['icons/icon.png', 'icons/icon@2x.png'])
   response['Content-Type'] = 'application/vnd.apple.pkpass'

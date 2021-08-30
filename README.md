@@ -9,8 +9,14 @@ Service issuing iOS passes for Quebec COVID-19 Vaccine Passport. You need a vali
 
 ```console
 cd backend
-bundle install
+bundle
 ruby app.rb
+```
+
+Prepare JS bundle
+```console
+node public/javascript/shc-parser.bundle.js
+browserify public/javascript/shc-parser.js -o public/javascript/shc-parser.bundle.js
 ```
 
 A `.env` file with the proper certicates is required to sign iOS passes.
