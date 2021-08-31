@@ -50,9 +50,9 @@ post '/api/pass' do
     name: name(entries[0]),
     qr_content: params[:raw_shc],
     location: location(entries[2]),
-    status: shot_status(entries[2]).eql?('completed') ? COMPLETED : PENDING
+    status: shot_status(entries[2]).eql?('completed') ? COMPLETED : PENDING,
     # TODO: payload is already sent in the clear from the post request
-    serial_number: Digest::SHA256.hexdigest(serial_number(qr_json))
+    serial_number: Digest::SHA256.hexdigest(serial_number(qr_json)),
   )
 
   passbook = Passbook::PKPass.new(pass)
