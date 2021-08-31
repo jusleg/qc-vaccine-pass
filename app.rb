@@ -31,6 +31,8 @@ Passbook.configure do |passbook|
 end
 
 PASS_TEMPLATE = ERB.new(File.read('views/pass.json.erb'))
+COMPLETED = "✅ double vaccinated"
+PENDING = "🕙 pending"
 
 get '/' do
   erb :home
@@ -42,18 +44,15 @@ end
 
 post '/api/pass' do
   qr_json = JSON.parse(params[:qr_content])
-  serial_number = serial_number(qr_json)
   entries = qr_json.dig('payload', 'vc', 'credentialSubject', 'fhirBundle', 'entry')
-  name = name(entries[0])
-  # shot_status = shot_status(entries[2])
-  location = location(entries[2])
 
   pass = PASS_TEMPLATE.result_with_hash(
-    name: name,
+    name: name(entries[0]),
     qr_content: params[:raw_shc],
-    location: location,
+    location: location(entries[2]),
+    status: shot_status(entries[2]).eql?('completed') ? COMPLETED : PENDING
     # TODO: payload is already sent in the clear from the post request
-    serial_number: Digest::SHA256.hexdigest(serial_number)
+    serial_number: Digest::SHA256.hexdigest(serial_number(qr_json))
   )
 
   passbook = Passbook::PKPass.new(pass)
