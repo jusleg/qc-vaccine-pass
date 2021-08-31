@@ -58,4 +58,4 @@ build-iPhoneSimulator/
 .env
 .DS_Store
 
-backend/node_modules/
+node_modules/
