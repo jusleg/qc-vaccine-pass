@@ -23,7 +23,6 @@ jobs:
           ruby-version: 3.0.2
       - name: Rubocop
         run: |
-          cd backend/
           gem install relaxed-rubocop
           gem install rubocop
           rubocop
