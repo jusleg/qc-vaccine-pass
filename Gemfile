@@ -13,3 +13,8 @@ group :development do
   gem 'relaxed-rubocop'
   gem 'rubocop'
 end
+
+group :test do
+  gem "rspec"
+  gem "rack-test"
+end
