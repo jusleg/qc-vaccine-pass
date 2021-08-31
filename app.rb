@@ -9,10 +9,10 @@ require 'dotenv/load'
 require 'json'
 require_relative 'lib/passbook_monkeypatch'
 require_relative 'helpers/locale_helper'
-require_relative 'helpers/pass_helper'
+require_relative 'helpers/shc_helper'
 
 helpers LocaleHelper
-helpers PassHelper
+helpers ShcHelper
 
 register Sinatra::I18nSupport
 load_locales './config/locales'
@@ -44,7 +44,6 @@ post '/api/pass' do
   qr_json = JSON.parse(params[:qr_content])
   serial_number = serial_number(qr_json)
   entries = qr_json.dig('payload', 'vc', 'credentialSubject', 'fhirBundle', 'entry')
-  # TODO: access hash with keys instead of array positions for redundancy,
   name = name(entries[0])
   # shot_status = shot_status(entries[2])
   location = location(entries[2])
