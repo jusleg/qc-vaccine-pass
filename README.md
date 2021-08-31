@@ -1,3 +1,5 @@
+
+[![CI](https://github.com/jusleg/qc-vaccine-pass/actions/workflows/ci.yml/badge.svg)](https://github.com/jusleg/qc-vaccine-pass/actions/workflows/ci.yml)
 # [QC Vaccine Pass](https://qc-vaccine-pass.herokuapp.com)
 
 Service issuing iOS passes for Quebec COVID-19 Vaccine Passport. You need a valid vaccine proof to be able to generate a Passkit version that can be used in the wallet app.
