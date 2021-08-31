@@ -22,4 +22,9 @@ We added rubocop to enforce the [relaxed ruby style](https://relaxed.ruby.style)
 
 An `.env` file with the proper certificates is required to sign iOS passes.
 
+# Test
+```bash
+rspec
+```
 
+# Deployment
