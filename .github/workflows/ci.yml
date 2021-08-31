@@ -11,7 +11,7 @@ on:
 jobs:
   rubocop:
     if: github.event.pull_request.draft == false
-    name: .rb linting
+    name: Rubocop
     runs-on: ubuntu-latest
     timeout-minutes: 1
     steps:
@@ -26,3 +26,28 @@ jobs:
           gem install relaxed-rubocop
           gem install rubocop
           rubocop
+  rspec:
+    if: github.event.pull_request.draft == false
+    name: RSpec
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.2
+      - name: Bundler Cache
+        uses: pat-s/always-upload-cache@v2.1.3
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      - name: Bundle Install
+        run: |
+          gem install bundler
+          bundle install --path vendor/bundle
+      - name: Rspec
+        run: bundle exec rspec
