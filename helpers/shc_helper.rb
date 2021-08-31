@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module PassHelper
+module ShcHelper
   def location(entry)
     entry.dig('resource', 'performer', 0, 'actor', 'display')
   end
@@ -14,8 +14,8 @@ module PassHelper
   end
 
   def name(entry)
-    person = entry.dig('resource', 'name')
-    "#{person[0]['given'][0]} #{person[0]['family'].join(' ')}"
+    person = entry.dig('resource', 'name', 0)
+    "#{person['given'].join(' ')} #{person['family']}"
   end
 
   def serial_number(payload)
