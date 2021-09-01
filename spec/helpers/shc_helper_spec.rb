@@ -36,7 +36,7 @@ RSpec.describe ShcHelper do
           'patient' => { 'reference' => 'resource:0' },
           'occurrenceDateTime' => first_shot_date,
           'performer' => [{ 'actor' => { 'display' => hospital_on } }],
-          'lotNumber' => 'FD7206'
+          'lotNumber' => 'FD7206',
           'note' => [{
             'text' => 'PB COVID-19',
           }],
