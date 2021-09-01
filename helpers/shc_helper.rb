@@ -6,7 +6,7 @@ module ShcHelper
 
   # QC and ON have different location objects
   def location(entry)
-    return '' unless entry.present?
+    return '' if entry.nil? || entry&.empty?
 
     result = entry.dig('resource', 'performer', 0, 'actor', 'display') ||
              entry.dig('resource', 'location', 'display')
@@ -14,38 +14,38 @@ module ShcHelper
   end
 
   def date(entry)
-    return '' unless entry.present?
+    return '' if entry.nil? || entry&.empty?
 
     entry.dig('resource', 'occurrenceDateTime')
   end
 
   def shot_status(entry)
-    return '' unless entry.present?
+    return '' if entry.nil? || entry&.empty?
 
     entry.dig('resource', 'status')
   end
 
   def status_text(string)
-    return PENDING unless string.present?
+    return PENDING if string.nil? || string&.empty?
 
-    string.downcase.include?('complete') ? COMPLETED : PENDING,
+    string.downcase.include?('complete') ? COMPLETED : PENDING
   end
 
   def name(entry)
-    return '' unless entry.present?
+    return '' if entry.nil? || entry&.empty?
 
     person = entry.dig('resource', 'name', 0)
     "#{person['given'].join(' ')} #{person['family'].join(' ')}"
   end
 
   def birth_date(entry)
-    return '' unless entry.present?
+    return '' if entry.nil? || entry&.empty?
 
     entry.dig('resource', 'birthDate')
   end
 
   def serial_number(payload)
-    return '' unless payload.present?
+    return '' if payload.nil? || payload&.empty?
 
     payload.dig('header', 'kid')
   end
