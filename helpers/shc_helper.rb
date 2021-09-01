@@ -21,6 +21,10 @@ module ShcHelper
     "#{person['given'].join(' ')} #{person['family'].join(' ')}"
   end
 
+  def birth_date(entry)
+    entry.dig('resource', 'birthDate')
+  end
+
   def serial_number(payload)
     payload.dig('header', 'kid')
   end
