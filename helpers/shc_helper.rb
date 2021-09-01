@@ -18,7 +18,7 @@ module ShcHelper
 
   def name(entry)
     person = entry.dig('resource', 'name', 0)
-    "#{person['given'].join(' ')} #{person['family']}"
+    "#{person['given'].join(' ')} #{person['family'].join(' ')}"
   end
 
   def serial_number(payload)
