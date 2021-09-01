@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
 module ShcHelper
+  # QC and ON have different location objects
   def location(entry)
-    entry.dig('resource', 'performer', 0, 'actor', 'display')
+    result = entry.dig('resource', 'performer', 0, 'actor', 'display') ||
+             entry.dig('resource', 'location', 'display')
+    result&.tr("0-9", "")
   end
 
   def date(entry)
@@ -15,7 +18,11 @@ module ShcHelper
 
   def name(entry)
     person = entry.dig('resource', 'name', 0)
-    "#{person['given'].join(' ')} #{person['family']}"
+    "#{person['given'].join(' ')} #{person['family'].join(' ')}"
+  end
+
+  def birth_date(entry)
+    entry.dig('resource', 'birthDate')
   end
 
   def serial_number(payload)

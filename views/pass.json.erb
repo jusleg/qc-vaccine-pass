@@ -14,7 +14,7 @@
         "format": "PKBarcodeFormatQR",
         "messageEncoding": "iso-8859-1"
     },
-    "generic" : {
+    "eventTicket" : {
         "primaryFields" : [
             {
                 "key" : "name",
@@ -24,18 +24,41 @@
         ],
         "secondaryFields" : [
             {
-                "key" : "status",
-                "label" : "Status",
-                "value" : "<%= status %>"
+                "key" : "birth_date",
+                "label" : "Date of Birth",
+                "value" : "<%= birth_date %>"
             },
             {
-                "key" : "location",
-                "label" : "Location",
-                "value" : "<%= location %>"
+                "key" : "status",
+                "label" : "Protection Status",
+                "value" : "<%= status %>"
             }
         ],
         "auxiliaryFields" : [
-
+            {
+                "row": 0,
+                "label" : "Dose 1",
+                "key" : "date_one",
+                "dateStyle": "PKDateStyleShort",
+                "value" : "<%= date_one %>"
+            },
+            {
+                "row": 0,
+                "key" : "location_one",
+                "value" : "<%= location_one %>"
+            },
+            {
+                "row": 1,
+                "label" : "Dose 2",
+                "key" : "date_two",
+                "dateStyle": "PKDateStyleShort",
+                "value" : "<%= date_two %>"
+            },
+            {
+                "row": 1,
+                "key" : "location_two",
+                "value" : "<%= location_two %>"
+            }
         ],
         "backFields" : [
             {

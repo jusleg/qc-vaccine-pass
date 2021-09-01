@@ -7,12 +7,14 @@ RSpec.describe ShcHelper do
   include ShcHelper
 
   let(:serial_num) { '3Kfdg-XwP-7gXyywtUfUADwBumDOPKMQx-iELL11W9s' }
-  let(:hospital) { 'ABC General Hospital' }
+  let(:hospital_on) { 'ABC General Hospital' }
+  let(:hospital_qc) { '06 HOPITAL GENERAL DE MONTREAL' }
   let(:given_name) { ['John', 'D.'] }
-  let(:family_name) { 'Cena' }
+  let(:family_name) { ['Cena'] }
+  let(:bday) { '1951-01-20' }
   let(:first_shot_date) { '2021-01-29' }
   let(:second_shot_date) { '2021-03-29' }
-  let(:status)  { 'completed' }
+  let(:status)  { 'Completed' }
   let(:entries) {
     [
       {
@@ -20,7 +22,7 @@ RSpec.describe ShcHelper do
         'resource' => {
           'resourceType' => 'Patient',
           'name' => [{ 'family' => family_name, 'given' => given_name }],
-          'birthDate' => '1951-01-20'
+          'birthDate' => bday,
         }
       },
       {
@@ -33,11 +35,15 @@ RSpec.describe ShcHelper do
           },
           'patient' => { 'reference' => 'resource:0' },
           'occurrenceDateTime' => first_shot_date,
-          'performer' => [{ 'actor' => { 'display' => hospital } }],
-          'lotNumber' => '0000001'
+          'performer' => [{ 'actor' => { 'display' => hospital_on } }],
+          'lotNumber' => 'FD7206',
+          'note' => [{
+            'text' => 'PB COVID-19',
+          }],
         }
       },
-      { 'fullUrl' => 'resource:2',
+      {
+        'fullUrl' => 'resource:2',
         'resource' => {
           'resourceType' => 'Immunization',
           'status' => status,
@@ -46,9 +52,16 @@ RSpec.describe ShcHelper do
           },
           'patient' => { 'reference' => 'resource:0' },
           'occurrenceDateTime' => second_shot_date,
-          'performer' => [{ 'actor' => { 'display' => hospital } }],
-          'lotNumber' => '0000007'
-        } }
+          "location" => {
+            "reference" => "resource:0",
+            "display" => hospital_qc
+          },
+          'lotNumber' => 'FD7206',
+          'note' => [{
+            'text' => 'PB COVID-19',
+          }],
+        }
+      }
     ]
   }
 
@@ -73,7 +86,7 @@ RSpec.describe ShcHelper do
             'fhirBundle' => {
               'resourceType' => 'Bundle',
               'type' => 'collection',
-              'entry' => entries
+              'entry' => entries,
             }
           }
         }
@@ -82,8 +95,8 @@ RSpec.describe ShcHelper do
   end
 
   it 'retrieves the locations' do
-    expect(location(entries[1])).to eq(hospital)
-    expect(location(entries[2])).to eq(hospital)
+    expect(location(entries[1])).to eq(hospital_on.tr("0-9", ""))
+    expect(location(entries[2])).to eq(hospital_qc.tr("0-9", ""))
   end
 
   it 'retrieves the vaccination date' do
@@ -98,6 +111,10 @@ RSpec.describe ShcHelper do
 
   it 'retrieves the patients name' do
     expect(name(entries[0])).to eq('John D. Cena')
+  end
+
+  it 'retrieves the patients birth date' do
+    expect(birth_date(entries[0])).to eq(bday)
   end
 
   it 'retrieves the serial number' do
