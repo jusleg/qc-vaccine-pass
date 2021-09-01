@@ -31,8 +31,6 @@ Passbook.configure do |passbook|
 end
 
 PASS_TEMPLATE = ERB.new(File.read('views/pass.json.erb'))
-COMPLETED = "✅ Adequately protected"
-PENDING = "🕙 pending"
 
 get '/' do
   erb :home
@@ -48,9 +46,8 @@ post '/api/pass' do
 
   pass = PASS_TEMPLATE.result_with_hash(
     name: name(entries[0]),
-    birth_date: '1951-01-20',
-    # birth_date: birth_date(entries[0]),
-    status: shot_status(entries[2]).downcase.include?('complete') ? COMPLETED : PENDING,
+    birth_date: birth_date(entries[0]),
+    status: status_text(shot_status(entries[2])),
     serial_number: Digest::SHA256.hexdigest(serial_number(qr_json)),
     qr_content: params[:raw_shc],
     location_one: location(entries[1]),
